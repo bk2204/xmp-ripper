@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+import sys
+
+import libxmp
+
+"""
+A script to extract XMP metadata from the list of files provided on the command
+line.
+"""
+
+if len(sys.argv) == 1 or sys.argv[1] == '--help':
+    print("usage: xmp-ripper file...")
+    sys.exit(0)
+
+files = libxmp.XMPFiles()
+for f in sys.argv[1:]:
+    files.open_file(f, open_usepacketscanning=True, open_onlyxmp=True)
+    data = files.get_xmp()
+    if data is None:
+        continue
+    sys.stdout.write(str(data) + "\n")
+    files.close_file()

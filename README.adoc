@@ -1,0 +1,6 @@
+= XMP Ripper
+
+This tool is designed to rip XMP metadata out of files and print it to standard
+output.  You simply give it a list of files on the command line.  It uses packet
+scanning, so it works on all types of files.  If no XMP metadata is present, it
+produces no output.
